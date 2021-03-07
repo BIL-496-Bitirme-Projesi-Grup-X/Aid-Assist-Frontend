@@ -1,3 +1,4 @@
+import 'package:aid_assist/screens/nearby_places_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'calculate_corona_risk_screen.dart';
@@ -85,6 +86,36 @@ class MainScreen extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Text(
               "Korona Riskini Hesapla",
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.green.withOpacity(0.7),
+                  Colors.green,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+        ),
+        InkWell(
+          onTap: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NearbyPlacesScreen(),
+              ),
+            )
+          },
+          splashColor: Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.circular(15),
+          child: Container(
+            padding: const EdgeInsets.all(15),
+            child: Text(
+              "En yakın\n-eczane\n-hastane",
               style: Theme.of(context).textTheme.headline6,
             ),
             decoration: BoxDecoration(
