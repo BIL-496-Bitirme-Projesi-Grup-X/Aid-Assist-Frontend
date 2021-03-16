@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'constants.dart';
 
 Card newCoronaStatisticsCard(String title, var number) {
@@ -37,3 +37,51 @@ Card newCoronaStatisticsCard(String title, var number) {
     ),
   );
 }
+
+Card newEmergencyCallCard(String title, var number) {
+   return Card(
+     child: Column(
+       mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ColoredBox(
+                    color: Colors.red,
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 20,
+                      child: Center(
+                          child: Text(
+                        title,
+                        style:
+                            TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                      )),
+                    )),
+                ColoredBox(
+                  color: Color.fromRGBO(111, 111, 111, 0.80),
+                  child: SizedBox(
+                      width: double.infinity,
+                      height: 55,
+                      child: Center(
+                          child: new GestureDetector(
+                              onTap: () => launch("tel://" + number),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.call,
+                                    color: Colors.red,
+                                    size: 35,
+                                  ),
+                                  Text(
+                                    number,
+                                    style: TextStyle(
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  )
+                                ],
+                              )))),
+                ),
+              ],
+            ),
+          );
+        }
