@@ -1,3 +1,4 @@
+import 'package:aid_assist/screens/daily_corona_statistics_screen.dart';
 import 'package:aid_assist/screens/nearby_places_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -56,6 +57,36 @@ class MainScreen extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Text(
               "ALO YARDIM",
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.green.withOpacity(0.7),
+                  Colors.green,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+        ),
+        InkWell(
+          onTap: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DailyCoronaStatisticsScreen(),
+              ),
+            )
+          },
+          splashColor: Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.circular(15),
+          child: Container(
+            padding: const EdgeInsets.all(15),
+            child: Text(
+              "Günlük Korona İstatikleri",
               style: Theme.of(context).textTheme.headline6,
             ),
             decoration: BoxDecoration(
