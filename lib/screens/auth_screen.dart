@@ -55,8 +55,7 @@ class AuthScreen extends StatelessWidget {
                       child: Text(
                         'Aid Assist',
                         style: TextStyle(
-                          color:
-                          Theme.of(context).accentTextTheme.headline6.color,
+                          color: Colors.white,
                           fontSize: 35,
                           fontFamily: 'Anton',
                           fontWeight: FontWeight.normal,

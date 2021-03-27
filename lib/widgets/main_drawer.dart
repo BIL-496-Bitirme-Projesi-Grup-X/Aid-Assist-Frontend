@@ -1,4 +1,6 @@
+import 'package:aid_assist/providers/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
@@ -44,6 +46,16 @@ class MainDrawer extends StatelessWidget {
           buildListTile('Ana Ekran', Icons.home, () {
             Navigator.of(context).pushReplacementNamed('/');
           }),
+          Divider(),
+          buildListTile(
+            'Çıkış Yap',
+            Icons.exit_to_app,
+            () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushReplacementNamed('/');
+              Provider.of<Auth>(context, listen: false).logout();
+            },
+          ),
         ],
       ),
     );
