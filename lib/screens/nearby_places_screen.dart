@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:location/location.dart';
 
 class NearbyPlacesScreen extends StatefulWidget {
   @override
@@ -17,17 +18,21 @@ class _NearbyPlacesScreenState extends State<NearbyPlacesScreen> {
 
   Future<NearbySearchModel> futureNearbySearchLocations;
 
+  Location _location = Location();
+  LocationData _locationData;
+
   @override
   void initState() {
-    futureNearbySearchLocations = fetchNearbySearchLocations();
     super.initState();
   }
 
-  Future<NearbySearchModel> fetchNearbySearchLocations() async {
+  Future<NearbySearchModel> fetchNearbySearchLocations(String type) async {
     var queryParameters = {
-      'location': '39.9334,32.8597',
+      'location': _locationData.latitude.toString() +
+          "," +
+          _locationData.longitude.toString(),
       'radius': '1500',
-      'type': 'hospital',
+      'type': type,
       'key': 'AIzaSyDRNYfAWszVQ8vD39BK1XGXQxWWARH6fvM'
     };
 
@@ -37,10 +42,10 @@ class _NearbyPlacesScreenState extends State<NearbyPlacesScreen> {
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      _hospitals.clear();
+      _typeMarkers.clear();
       var nearbySearchLocations = nearbySearchModelFromJson(response.body);
       nearbySearchLocations.results.forEach((element) {
-        _hospitals.add(Marker(
+        _typeMarkers.add(Marker(
           markerId: MarkerId(LatLng(
                   element.geometry.location.lat, element.geometry.location.lng)
               .toString()),
@@ -53,6 +58,12 @@ class _NearbyPlacesScreenState extends State<NearbyPlacesScreen> {
           icon: BitmapDescriptor.defaultMarker,
         ));
       });
+
+      setState(() {
+        _markers.clear();
+        _markers.addAll(_typeMarkers);
+      });
+
       return nearbySearchLocations;
     } else {
       // If the server did not return a 200 OK response,
@@ -64,12 +75,25 @@ class _NearbyPlacesScreenState extends State<NearbyPlacesScreen> {
   static const LatLng _center = const LatLng(39.9334, 32.8597);
   void _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);
+    _location.onLocationChanged.listen((l) {
+      if (_locationData == null ||
+          l.latitude != _locationData.latitude ||
+          l.longitude != _locationData.longitude) {
+        _locationData = l;
+
+        controller.animateCamera(
+          CameraUpdate.newCameraPosition(
+            CameraPosition(target: LatLng(l.latitude, l.longitude), zoom: 15),
+          ),
+        );
+      }
+    });
   }
 
   var _currentMapType = MapType.normal;
 
   final Set<Marker> _markers = {};
-  final Set<Marker> _hospitals = {};
+  final Set<Marker> _typeMarkers = {};
 
   void _onMapTypeButtonPressed() {
     setState(() {
@@ -79,10 +103,8 @@ class _NearbyPlacesScreenState extends State<NearbyPlacesScreen> {
     });
   }
 
-  void _onAddMarkerButtonPressed() {
-    setState(() {
-      _markers.addAll(_hospitals);
-    });
+  void _onAddMarkerButtonPressed(String type) {
+    fetchNearbySearchLocations(type);
   }
 
   void _onCameraMove(CameraPosition position) {}
@@ -102,6 +124,7 @@ class _NearbyPlacesScreenState extends State<NearbyPlacesScreen> {
               target: _center,
               zoom: 15.0,
             ),
+            myLocationEnabled: true,
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -115,10 +138,22 @@ class _NearbyPlacesScreenState extends State<NearbyPlacesScreen> {
                   child: const Icon(Icons.map, size: 36.0),
                 ),
                 FloatingActionButton(
-                  onPressed: _onAddMarkerButtonPressed,
+                  onPressed: () => _onAddMarkerButtonPressed("hospital"),
                   materialTapTargetSize: MaterialTapTargetSize.padded,
                   backgroundColor: Colors.green,
-                  child: const Icon(Icons.add_location, size: 36.0),
+                  child: const Icon(Icons.local_hospital, size: 36.0),
+                ),
+                FloatingActionButton(
+                  onPressed: () => _onAddMarkerButtonPressed("pharmacy"),
+                  materialTapTargetSize: MaterialTapTargetSize.padded,
+                  backgroundColor: Colors.green,
+                  child: const Icon(Icons.local_pharmacy, size: 36.0),
+                ),
+                FloatingActionButton(
+                  onPressed: () => _onAddMarkerButtonPressed("veterinary_care"),
+                  materialTapTargetSize: MaterialTapTargetSize.padded,
+                  backgroundColor: Colors.green,
+                  child: const Icon(Icons.emoji_nature, size: 36.0),
                 ),
               ]),
             ),

@@ -125,11 +125,11 @@ class Geometry {
     this.viewport,
   });
 
-  Location location;
+  LocationGoogle location;
   Viewport viewport;
 
   factory Geometry.fromJson(Map<String, dynamic> json) => Geometry(
-        location: Location.fromJson(json["location"]),
+        location: LocationGoogle.fromJson(json["location"]),
         viewport: Viewport.fromJson(json["viewport"]),
       );
 
@@ -139,8 +139,8 @@ class Geometry {
       };
 }
 
-class Location {
-  Location({
+class LocationGoogle {
+  LocationGoogle({
     this.lat,
     this.lng,
   });
@@ -148,7 +148,7 @@ class Location {
   double lat;
   double lng;
 
-  factory Location.fromJson(Map<String, dynamic> json) => Location(
+  factory LocationGoogle.fromJson(Map<String, dynamic> json) => LocationGoogle(
         lat: json["lat"].toDouble(),
         lng: json["lng"].toDouble(),
       );
@@ -165,12 +165,12 @@ class Viewport {
     this.southwest,
   });
 
-  Location northeast;
-  Location southwest;
+  LocationGoogle northeast;
+  LocationGoogle southwest;
 
   factory Viewport.fromJson(Map<String, dynamic> json) => Viewport(
-        northeast: Location.fromJson(json["northeast"]),
-        southwest: Location.fromJson(json["southwest"]),
+        northeast: LocationGoogle.fromJson(json["northeast"]),
+        southwest: LocationGoogle.fromJson(json["southwest"]),
       );
 
   Map<String, dynamic> toJson() => {
