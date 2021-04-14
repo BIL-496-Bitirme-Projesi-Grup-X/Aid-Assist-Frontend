@@ -64,10 +64,12 @@ class MainDrawer extends StatelessWidget {
             Navigator.of(context).pushReplacementNamed('/');
           }),
           buildListTile('Afet öncesi bilgilendirme', Icons.star, () {
-            Navigator.of(context).pushReplacementNamed('/');
+            _launchInBrowser(
+                'http://' + Auth.hostAddress + "/static/afet_oncesi.pdf");
           }),
           buildListTile('Afet sonrası bilgilendirme', Icons.star, () {
-            Navigator.of(context).pushReplacementNamed('/');
+            _launchInBrowser(
+                'http://' + Auth.hostAddress + "/static/afet_sonrasi.pdf");
           }),
           buildListTile('Alo yardım', Icons.star, () {
             Navigator.push(
@@ -81,7 +83,8 @@ class MainDrawer extends StatelessWidget {
             _launchInBrowser('https://www.saglik.gov.tr/');
           }),
           buildListTile('Korona önlem', Icons.star, () {
-            Navigator.of(context).pushReplacementNamed('/');
+            _launchInBrowser(
+                'http://' + Auth.hostAddress + "/static/korona_onlem.pdf");
           }),
           buildListTile('Güncel istatistik', Icons.star, () {
             Navigator.push(

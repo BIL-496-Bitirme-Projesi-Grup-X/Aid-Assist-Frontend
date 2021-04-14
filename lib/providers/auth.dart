@@ -16,6 +16,8 @@ class Auth with ChangeNotifier {
   String _userId;
   Timer _authTimer;
 
+  static const hostAddress = "192.168.0.31:8080";
+
   bool get isAuth {
     return _token != null;
   }
@@ -37,7 +39,10 @@ class Auth with ChangeNotifier {
       String nationalId, String password, String urlSegment) async {
     try {
       final response = await http.post(
-        Uri.http('10.0.2.2:8080', 'user/$urlSegment'),
+        // If the backend and frontend codes run on the same Wi-Fi, then host machine ip can be used for physical phones
+        // It is needed to change from 192.168.0.x to host machine ip.
+        Uri.http(hostAddress, 'user/$urlSegment'),
+
         headers: {"Content-Type": "application/json"},
         body: json.encode({
           'nationalIdentityNo': nationalId,
