@@ -43,7 +43,7 @@ class AuthScreen extends StatelessWidget {
                           EdgeInsets.symmetric(vertical: 8.0, horizontal: 75.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.green.shade500,
+                        color: Colors.orange.shade500,
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 8,

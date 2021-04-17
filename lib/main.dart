@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
             builder: (ctx, auth, _) => MaterialApp(
                   title: 'Aid Assist',
                   theme: ThemeData(
-                    primarySwatch: Colors.green,
-                    accentColor: Colors.lime,
+                    primarySwatch: Colors.purple,
+                    accentColor: Colors.orange,
                     canvasColor: Color.fromRGBO(255, 254, 229, 1),
                     fontFamily: 'Raleway',
                     textTheme: ThemeData.light().textTheme.copyWith(

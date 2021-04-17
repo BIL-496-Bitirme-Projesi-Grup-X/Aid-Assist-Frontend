@@ -32,8 +32,8 @@ class MainScreen extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.green.withOpacity(0.7),
-                  Colors.green,
+                  Colors.orange.withOpacity(0.7),
+                  Colors.orange,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -62,8 +62,8 @@ class MainScreen extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.green.withOpacity(0.7),
-                  Colors.green,
+                  Colors.orange.withOpacity(0.7),
+                  Colors.orange,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -92,8 +92,8 @@ class MainScreen extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.green.withOpacity(0.7),
-                  Colors.green,
+                  Colors.orange.withOpacity(0.7),
+                  Colors.orange,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -122,8 +122,8 @@ class MainScreen extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.green.withOpacity(0.7),
-                  Colors.green,
+                  Colors.orange.withOpacity(0.7),
+                  Colors.orange,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -152,8 +152,8 @@ class MainScreen extends StatelessWidget {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.green.withOpacity(0.7),
-                  Colors.green,
+                  Colors.orange.withOpacity(0.7),
+                  Colors.orange,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,

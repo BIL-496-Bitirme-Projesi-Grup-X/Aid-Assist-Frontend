@@ -4,7 +4,7 @@ import 'constants.dart';
 
 Card newPsychologicalSupportCard(String title, Color color, Function function) {
   return Card(
-      color: Colors.green.withOpacity(0.8),
+      color: Colors.orange.withOpacity(0.8),
       child: Container(
         padding: const EdgeInsets.all(16.0),
         child: InkWell(
@@ -27,7 +27,7 @@ Card newCoronaStatisticsCard(String title, var number) {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         ColoredBox(
-            color: Color.fromRGBO(0, 160, 160, 0.80),
+            color: Color.alphaBlend(Colors.purple[400], Colors.red),
             child: SizedBox(
               width: double.infinity,
               height: 20,
@@ -39,7 +39,7 @@ Card newCoronaStatisticsCard(String title, var number) {
               )),
             )),
         ColoredBox(
-            color: Color.fromRGBO(111, 111, 111, 0.80),
+            color: Color.alphaBlend(Colors.orange[700], Colors.red),
             child: SizedBox(
               width: double.infinity,
               height: 60,
@@ -63,7 +63,7 @@ Card newEmergencyCallCard(String title, var number) {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         ColoredBox(
-            color: Colors.red,
+            color: Colors.purple[400],
             child: SizedBox(
               width: double.infinity,
               height: 20,
@@ -75,7 +75,7 @@ Card newEmergencyCallCard(String title, var number) {
               )),
             )),
         ColoredBox(
-          color: Color.fromRGBO(111, 111, 111, 0.80),
+          color: Color.alphaBlend(Colors.orange[700], Colors.blue),
           child: SizedBox(
               width: double.infinity,
               height: 55,
@@ -87,7 +87,7 @@ Card newEmergencyCallCard(String title, var number) {
                         children: <Widget>[
                           Icon(
                             Icons.call,
-                            color: Colors.red,
+                            color: Colors.red[900],
                             size: 35,
                           ),
                           Text(

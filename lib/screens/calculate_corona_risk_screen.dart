@@ -20,7 +20,7 @@ class CalculateCoronaRiskScreen extends StatelessWidget {
         new Container(
           margin: const EdgeInsets.only(top: 50.0),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 100),
-          decoration: BoxDecoration(border: Border.all(color: Colors.green)),
+          decoration: BoxDecoration(border: Border.all(color: Colors.orange)),
           child: new GestureDetector(
             onTap: () => {
               Navigator.pushReplacement(
@@ -35,7 +35,7 @@ class CalculateCoronaRiskScreen extends StatelessWidget {
         new Container(
             margin: const EdgeInsets.only(top: 50.0),
             padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 80),
-            decoration: BoxDecoration(border: Border.all(color: Colors.green)),
+            decoration: BoxDecoration(border: Border.all(color: Colors.orange)),
             child: new GestureDetector(
               onTap: () => {
                 Navigator.pushReplacement(
